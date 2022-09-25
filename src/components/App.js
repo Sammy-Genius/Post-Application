@@ -26,7 +26,11 @@ function App() {
     setPostList(updatedPosts);
   }
 
-  
+  const editPost = (id) => {
+    const editedPost = postList.filter(post => post.id !== id);
+    setPostList(editedPost);
+    setModal(!modal);
+  }
 
   return (
     <div className="w-screen h-screen bg-[#fad390] flexbox relative">
@@ -42,7 +46,7 @@ function App() {
                 <p className="mt-[10px] line-height">{post.description}</p>
               </div>
               <div className="w-[15%] h-full mt-[5px] ml-auto">
-                <span>
+                <span onClick={() => editPost(post.id)}>
                   <FontAwesomeIcon icon={ faEdit }/>
                 </span>
                 <span className="text-[#e55039] ml-[15px]" onClick={() => deletePost(post.id)}>
