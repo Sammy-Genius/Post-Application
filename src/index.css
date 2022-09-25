@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .flexbox {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+    .border-radius {
+        border-radius: 10px;
+    }
+    .shape-one {
+        clip-path: circle(36.7% at 8% 17%);
+    }
+    .overlay {
+        background-color:rgba(0, 0, 0, 0.7);
+    }
+}
