@@ -1,7 +1,24 @@
 import { useState } from "react";
+import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faFeather, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Modal from "./Modal";
+
+const displayVariants = {
+  from: {
+      y:50,
+      opacity:0,
+  },
+  to: {
+      y:0,
+      opacity:1, 
+
+      transition: {
+          type: 'tween',
+          duration:.6,
+      }
+  }
+}
 
 function App() {
 
@@ -34,13 +51,17 @@ function App() {
 
   return (
     <div className="w-screen h-screen bg-[#fad390] flexbox relative">
-      <div className="w-[90%] md:w-[30%] h-[90%] bg-slate-50 border-radius z-10 relative">
+      <div className="w-[90%] md:w-[30%] h-[90%] bg-slate-50 border-radius z-10 relative overflow-hidden">
         <div className="w-full h-[15%] flexbox border-radius">
           <h1 className="text-4xl font-black text-[#e55039] voyage">KleetApp</h1>
         </div>
         <div className="w-full h-auto mt-[30px]">
           {postList.map((post) => {
-            return <div className="w-[90%] min-h-[60px] my-10 mx-auto flex flex-col items-center lines">
+            return <motion.div className="w-[90%] min-h-[60px] my-10 mx-auto flex flex-col items-center lines"
+            variants={displayVariants}
+            initial='from'
+            animate='to'
+            >
               <div className="w-[95%] h-full">
                 <h2 className="text-[#e55039] font-black voyage">{post.title}</h2>
                 <p className="mt-[10px] line-height">{post.description}</p>
@@ -53,19 +74,20 @@ function App() {
                   <FontAwesomeIcon icon={ faTrash }/>
                 </span>
               </div>
-            </div>
+            </motion.div>
           })}
         </div>
         <Modal
          modal = { modal } 
          openModal = { openModal } 
          setTitle = { setTitle } 
-         setDescription = { setDescription } 
+         setDescription = { setDescription }
+         description = { description } 
          postKleet = { postKleet } />
-    
+
         { modal ? '' : 
-          <div className="absolute w-[60px] h-[60px] bg-[#e55039] right-[5%] bottom-[5%] rounded-full flexbox">
-            <span className="text-white text-2xl" onClick={ openModal }><FontAwesomeIcon icon={ faFeather} /></span>
+          <div className="absolute w-[60px] h-[60px] bg-[#e55039] right-[5%] bottom-[5%] cursor-pointer rounded-full flexbox">
+            <span className="text-[#fad390] text-2xl" onClick={ openModal }><FontAwesomeIcon icon={ faFeather} /></span>
           </div> 
         }
       </div>
