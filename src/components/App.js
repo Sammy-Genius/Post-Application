@@ -21,6 +21,13 @@ function App() {
     setModal(!modal);
   }
 
+  const deletePost = (id) => {
+    const updatedPosts = postList.filter(post => post.id !== id);
+    setPostList(updatedPosts);
+  }
+
+  
+
   return (
     <div className="w-screen h-screen bg-[#fad390] flexbox relative">
       <div className="w-[90%] md:w-[30%] h-[90%] bg-slate-50 border-radius z-10 relative">
@@ -30,15 +37,15 @@ function App() {
         <div className="w-full h-auto mt-[30px]">
           {postList.map((post) => {
             return <div className="w-[90%] min-h-[60px] my-10 mx-auto flex flex-col items-center lines">
-              <div className="w-full h-full">
+              <div className="w-[95%] h-full">
                 <h2 className="text-[#e55039] font-black voyage">{post.title}</h2>
                 <p className="mt-[10px] line-height">{post.description}</p>
               </div>
-              <div className="w-[20%] h-full mt-[5px] ml-auto">
+              <div className="w-[15%] h-full mt-[5px] ml-auto">
                 <span>
                   <FontAwesomeIcon icon={ faEdit }/>
                 </span>
-                <span className="text-[#e55039] ml-[15px]">
+                <span className="text-[#e55039] ml-[15px]" onClick={() => deletePost(post.id)}>
                   <FontAwesomeIcon icon={ faTrash }/>
                 </span>
               </div>
