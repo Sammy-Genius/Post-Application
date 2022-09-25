@@ -17,4 +17,33 @@
     .overlay {
         background-color:rgba(0, 0, 0, 0.7);
     }
+    .title-box {
+        width:80%;
+        height:30%;
+        border-bottom:2px solid gray;
+    }
+    .description-box {
+        width:80%;
+        height:auto;
+        margin-top:30px;
+        word-wrap:break-word;
+    }
+    .input {
+        border:0;
+        background:none;
+        outline:none;
+        width:100%;
+        height:100%;
+    }
+    .text-area {
+        border:0;
+        background:none;
+        outline:none;
+        width:100%;
+        height:100%;
+        resize:none;
+    }
+    .curved {
+        border-radius:30px;
+    }
 }
