@@ -42,10 +42,9 @@ const appearVariants = {
         clipPath: 'circle(100%)',
 
         transition: {
-            type: 'tween',
+            type: 'spring',
+            stiffness:100,
             duration:.6,
-            when: 'beforeChildren',
-            staggerChildren:.5
         }
     },
     exit: {
@@ -54,15 +53,14 @@ const appearVariants = {
         clipPath: 'circle(0%)',
 
         transition: {
-            type: 'tween',
+            type: 'spring',
+            stiffness:100,
             duration:.6,
-            when: 'afterChildren',
-            staggerChildren:.5 
         }
     }
 }
 
-const Modal = ({modal, openModal, setTitle, setDescription, postKleet, description}) => {
+const Modal = ({modal, openModal, setTitle, setDescription, postKleet, description, title}) => {
 
     return ( 
         <>
@@ -83,7 +81,7 @@ const Modal = ({modal, openModal, setTitle, setDescription, postKleet, descripti
                                 <textarea className="text-area" placeholder="what's on your mind..." onChange={e => setDescription(e.target.value)}></textarea>
                             </div>
                         </div>
-                        { description ? <motion.div className="absolute right-[5%] bottom-[5%] w-[70px] h-[40px] bg-[#e55039] curved flexbox" onClick = {postKleet} variants={appearVariants}>
+                        { description && title ? <motion.div className="absolute right-[5%] bottom-[5%] w-[70px] h-[40px] bg-[#e55039] curved flexbox" onClick = {postKleet} variants={appearVariants}>
                             <p className="text-[#fad390] voyage font-black cursor-pointer">Kleet</p>
                         </motion.div> : ''}
                         <motion.span className="absolute text-[#e55039] top-[3%] right-[5%] cursor-pointer" onClick={openModal} variants={appearVariants}>cancel</motion.span>

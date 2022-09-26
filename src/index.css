@@ -28,8 +28,17 @@
     .border-radius {
         border-radius: 10px;
     }
+    .round {
+        border-radius:50%;
+    }
     .shape-one {
-        clip-path: circle(36.7% at 8% 17%);
+        clip-path: circle(41.7% at 8% 17%);
+    }
+    .shape-two {
+        clip-path: circle(11.7% at 0% 0%);
+    }
+    .shape-three {
+        border:2px dotted gray;
     }
     .overlay {
         background-color:rgba(0, 0, 0, 0.7);

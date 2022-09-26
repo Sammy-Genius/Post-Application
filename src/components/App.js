@@ -20,6 +20,27 @@ const displayVariants = {
   }
 }
 
+const appearVariants = {
+  from: {
+      scale:0,
+      opacity:0,
+      clipPath: 'circle(0%)'
+  },
+  to: {
+      scale:1,
+      opacity:1, 
+      clipPath: 'circle(100%)',
+
+      transition: {
+          type: 'spring',
+          stiffness:100,
+          duration:.4,
+          when: 'beforeChildren',
+          staggerChildren:.3
+      }
+  },
+}
+
 function App() {
 
   const [modal, setModal] = useState(false);
@@ -50,7 +71,7 @@ function App() {
   }
 
   return (
-    <div className="w-screen h-screen bg-[#fad390] flexbox relative">
+    <div className="w-screen h-screen bg-[#fad390] flexbox relative overflow-hidden">
       <div className="w-[90%] md:w-[30%] h-[90%] bg-slate-50 border-radius z-10 relative overflow-hidden">
         <div className="w-full h-[15%] flexbox border-radius">
           <h1 className="text-4xl font-black text-[#e55039] voyage">KleetApp</h1>
@@ -83,6 +104,7 @@ function App() {
          setTitle = { setTitle } 
          setDescription = { setDescription }
          description = { description } 
+         title = { title } 
          postKleet = { postKleet } />
 
         { modal ? '' : 
@@ -90,8 +112,24 @@ function App() {
             <span className="text-[#fad390] text-2xl" onClick={ openModal }><FontAwesomeIcon icon={ faFeather} /></span>
           </div> 
         }
+        <div className="w-full h-full absolute top-0 left-0 shape-two bg-[#fad390]"></div>
+        <div className="w-full h-full absolute top-0 left-0 pointer-events-none">
+          <h1 className="voyage text-9xl opacity-10 absolute left-[-5%] bottom-[28%]">Kleet</h1>
+        </div>
       </div>
       <div className="absolute w-full h-full bg-[#e55039] shape-one"></div>
+      <div className="absolute w-full h-full flex justify-end">
+        <motion.div className="w-[25%] h-full flex flex-col"
+        variants={appearVariants}
+        initial='from'
+        animate='to'
+        >
+          <motion.div className="w-[210px] h-[210px] round bg-[#8c7ae6] self-end flexbox text-white font-black" variants={appearVariants}>share</motion.div>
+          <motion.div className="w-[250px] h-[250px] round shape-three flexbox text-[#535c68] font-black" variants={appearVariants}>your thoughts</motion.div>
+          <motion.div className="w-[270px] h-[270px] round bg-[#e55039] self-end flexbox text-white font-black text-xl" variants={appearVariants}>with Kleet</motion.div>
+        </motion.div>
+      </div>
+      <div className="w-[200px] h-[200px] round shape-three absolute bottom-0 right-[30%] hidden lg:block opacity-40"></div>
     </div>
   );
 }
