@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faFeather, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faFeather, faHeart, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import Modal from "./Modal";
 
 const displayVariants = {
@@ -47,6 +47,7 @@ function App() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [postList, setPostList] = useState([]);
+ 
 
   const openModal = () => {
     setModal(!modal);
@@ -72,7 +73,7 @@ function App() {
 
   return (
     <div className="w-screen h-screen bg-[#fad390] flexbox relative overflow-hidden">
-      <div className="w-[90%] md:w-[30%] h-[90%] bg-slate-50 border-radius z-10 relative overflow-hidden">
+      <div className="w-[90%] md:w-[60%] lg:w-[30%] h-[90%] bg-slate-50 border-radius z-10 relative overflow-hidden">
         <div className="w-full h-[15%] flexbox border-radius">
           <h1 className="text-4xl font-black text-[#e55039] voyage">KleetApp</h1>
         </div>
@@ -83,17 +84,21 @@ function App() {
             initial='from'
             animate='to'
             >
-              <div className="w-[95%] h-full">
-                <h2 className="text-[#e55039] font-black voyage">{post.title}</h2>
-                <p className="mt-[10px] line-height">{post.description}</p>
+              <div className="w-full h-full">
+                <div className="w-full flex justify-between">
+                  <h2 className="text-[#e55039] font-black voyage">{post.title}</h2>
+                  <div className="w-[10%] flex justify-between">
+                    <span onClick={() => editPost(post.id)}>
+                      <FontAwesomeIcon icon={ faEdit }/>
+                    </span>
+                    <span className="text-[#e55039]" onClick={() => deletePost(post.id)}>
+                      <FontAwesomeIcon icon={ faTrashCan }/>
+                    </span>
+                  </div>
+                </div>
+                <p className="mt-[10px] line-height inline-block w-[85%]">{post.description}</p>
               </div>
-              <div className="w-[15%] h-full mt-[5px] ml-auto">
-                <span onClick={() => editPost(post.id)}>
-                  <FontAwesomeIcon icon={ faEdit }/>
-                </span>
-                <span className="text-[#e55039] ml-[15px]" onClick={() => deletePost(post.id)}>
-                  <FontAwesomeIcon icon={ faTrash }/>
-                </span>
+              <div className="w-[25%] h-full mt-[5px] ml-auto flex justify-end">
               </div>
             </motion.div>
           })}
@@ -122,7 +127,7 @@ function App() {
         <img className='hidden lg:block w-[350px] h-[350px]' src={require('../img/comfort.png')} alt="" />
       </div>
       <div className="absolute w-full h-full flex justify-end">
-        <motion.div className="w-[25%] h-full flex flex-col"
+        <motion.div className="w-[25%] h-full flex flex-col relative"
         variants={appearVariants}
         initial='from'
         animate='to'
@@ -130,6 +135,8 @@ function App() {
           <motion.div className="w-[210px] h-[210px] round bg-[#8c7ae6] self-end flexbox text-white font-black" variants={appearVariants}>share</motion.div>
           <motion.div className="w-[250px] h-[250px] round shape-three flexbox text-[#535c68] font-black" variants={appearVariants}>your thoughts</motion.div>
           <motion.div className="w-[270px] h-[270px] round bg-[#e55039] self-end flexbox text-white font-black text-xl" variants={appearVariants}>with Kleet</motion.div>
+          <div className="absolute top-0 right-0 w-[35%] h-full -z-10 lines-two"></div>
+          <div className="w-full h-full absolute top-0 left-0 lines-two"></div>
         </motion.div>
       </div>
       <div className="w-[200px] h-[200px] round shape-three absolute bottom-0 right-[30%] hidden lg:block opacity-40"></div>

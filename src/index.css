@@ -82,6 +82,10 @@
         border-bottom:1px solid gray;
         padding-bottom:10px;
     }
+    .lines-two {
+        border-left:.1px dashed gray;
+        opacity:.35;
+    }
     .error {
         border:2px solid red;
     }
