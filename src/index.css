@@ -79,7 +79,7 @@
         line-height:30px;
     }
     .lines {
-        border-bottom:2px solid gray;
+        border-bottom:1px solid gray;
         padding-bottom:10px;
     }
     .error {
