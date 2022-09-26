@@ -117,7 +117,10 @@ function App() {
           <h1 className="voyage text-9xl opacity-10 absolute left-[-5%] bottom-[28%]">Kleet</h1>
         </div>
       </div>
-      <div className="absolute w-full h-full bg-[#e55039] shape-one"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-[#e55039] graph shape-one"></div>
+      <div className="absolute top-0 left-0 w-[40%] h-full flex items-end">
+        <img className='hidden lg:block w-[350px] h-[350px]' src={require('../img/comfort.png')} alt="" />
+      </div>
       <div className="absolute w-full h-full flex justify-end">
         <motion.div className="w-[25%] h-full flex flex-col"
         variants={appearVariants}
@@ -126,7 +129,7 @@ function App() {
         >
           <motion.div className="w-[210px] h-[210px] round bg-[#8c7ae6] self-end flexbox text-white font-black" variants={appearVariants}>share</motion.div>
           <motion.div className="w-[250px] h-[250px] round shape-three flexbox text-[#535c68] font-black" variants={appearVariants}>your thoughts</motion.div>
-          <motion.div className="w-[270px] h-[270px] round bg-[#e55039] self-end flexbox text-white font-black text-xl" variants={appearVariants}>with Kleet</motion.div>
+          <motion.div className="w-[270px] h-[270px] round bg-[#e55039] graph self-end flexbox text-white font-black text-xl" variants={appearVariants}>with Kleet</motion.div>
         </motion.div>
       </div>
       <div className="w-[200px] h-[200px] round shape-three absolute bottom-0 right-[30%] hidden lg:block opacity-40"></div>
