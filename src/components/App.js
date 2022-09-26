@@ -129,7 +129,7 @@ function App() {
         >
           <motion.div className="w-[210px] h-[210px] round bg-[#8c7ae6] self-end flexbox text-white font-black" variants={appearVariants}>share</motion.div>
           <motion.div className="w-[250px] h-[250px] round shape-three flexbox text-[#535c68] font-black" variants={appearVariants}>your thoughts</motion.div>
-          <motion.div className="w-[270px] h-[270px] round bg-[#e55039] graph self-end flexbox text-white font-black text-xl" variants={appearVariants}>with Kleet</motion.div>
+          <motion.div className="w-[270px] h-[270px] round bg-[#e55039] self-end flexbox text-white font-black text-xl" variants={appearVariants}>with Kleet</motion.div>
         </motion.div>
       </div>
       <div className="w-[200px] h-[200px] round shape-three absolute bottom-0 right-[30%] hidden lg:block opacity-40"></div>
