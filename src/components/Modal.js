@@ -66,13 +66,13 @@ const Modal = ({modal, openModal, setTitle, setDescription, postKleet, descripti
         <>
             <AnimatePresence>
                 { modal && (
-                <motion.div className="w-full h-full absolute top-0 left-0 overlay border-radius flexbox z-10"
+                <motion.div className="w-full h-full absolute top-0 left-0 overlay border-radius flex items-end z-10"
                 variants={ modalVariants }
                 initial='from'
                 animate='to'
                 exit='exit'
                 >
-                    <motion.div className="w-[80%] h-[80%] bg-slate-50 border-radius relative z-20" variants={modalVariants}>
+                    <motion.div className="w-full h-[80%] bg-slate-50 border-radius relative z-20" variants={modalVariants}>
                         <div className="w-[90%] h-[30%] my-[10%] mx-auto">
                             <div className="title-box">
                                 <input type="text" placeholder="title" className='input' required onChange={e => setTitle(e.target.value)}/>
@@ -85,6 +85,7 @@ const Modal = ({modal, openModal, setTitle, setDescription, postKleet, descripti
                             <p className="text-[#fad390] voyage font-black cursor-pointer">Kleet</p>
                         </motion.div> : ''}
                         <motion.span className="absolute text-[#e55039] top-[3%] right-[5%] cursor-pointer" onClick={openModal} variants={appearVariants}>cancel</motion.span>
+                        <div className='w-full h-full absolute shape-four bottom-0 left-0 bg-[#e55039]'></div>
                     </motion.div>
                 </motion.div>
                 )}

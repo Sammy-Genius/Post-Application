@@ -40,6 +40,9 @@
     .shape-three {
         border:2px dotted gray;
     }
+    .shape-four {
+        clip-path: circle(14.0% at 0% 100%);
+    }
     .overlay {
         background-color:rgba(0, 0, 0, 0.7);
     }
